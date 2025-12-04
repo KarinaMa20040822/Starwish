@@ -2,15 +2,14 @@ name: Daily Fortune Job
 
 on:
   schedule:
-    - cron: "0 16 * * *"   # 台灣 00:00 = UTC 16:00
-  workflow_dispatch:
+    - cron: "0 16 * * *"  # 台灣凌晨 12 點（UTC+8）
 
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Call Supabase Edge Function
+      - name: Call Supabase Daily Fortune Function
         run: |
           curl -X POST "https://ypoikgkkikfxtgnsnocd.functions.supabase.co/daily-fortune" \
-          -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
-          -H "Content-Type: application/json"
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE }}"

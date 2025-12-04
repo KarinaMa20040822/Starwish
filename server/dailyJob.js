@@ -103,7 +103,7 @@ async function runDailyCron() {
 
       // 3️⃣ 組成要寫入 fortune_data 的資料
       const insertData = {
-        date: today,
+        created_at: today,
         business_hours: daily.luckyTime || null,      // 吉時
         lucky_color: daily.luckyColor || null,      // 幸運色（原始文字）
         avoid_color: null,                          // 你如果之後要算霉運色也可以放
